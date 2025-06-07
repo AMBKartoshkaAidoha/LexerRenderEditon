@@ -39,7 +39,10 @@ def bool_token():
 def printf():
     return "OUTPUT"
 
-comma = ["printf", "renderf", "obama", "system"]
+def scanf():
+    return "INPUT"
+
+comma = ["printf", "renderf", "obama", "system", "scanf"]
 ID = r'[a-zA-Z]'
 operators = ["(", ")", "+", "-", "/", "*", "=", "!=", "==", ">", "<"]  #Taskall Render Edition v0.1 operators
 logical = ["and", "&&", "or", "||", "xor", "^^", "not", "!"]
@@ -61,7 +64,8 @@ token_operators = {
     "string": stringd,
     "bool": bool_token,
     "boolean": bool_token,
-    "printf": printf
+    "printf": printf,
+    "scanf": scanf,
 
 }
 
@@ -80,6 +84,9 @@ def tokenization():
         if char in comma:
             if char == "printf":
                 state = token_operators.get(char)()
+            elif char == "scanf":
+                state = token_operators.get(char)()
+
         elif char in types:
             if char == "int" or char == "digit":
                 state = token_operators.get(char)()

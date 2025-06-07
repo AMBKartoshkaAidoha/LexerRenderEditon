@@ -1,10 +1,9 @@
-import re
 
 def trim(list):
     for l in list:
         l += " "
 
-    return l
+        return l
 
 with open("obama.tasr", "r", encoding="UTF-8") as n:
     f = n.read().strip().split()
@@ -42,6 +41,12 @@ def printf():
 def scanf():
     return "INPUT"
 
+def do_while():
+    return "WHILE_TRUE"
+
+def do_while_not():
+    return "WHILE_FALSE"
+
 comma = ["printf", "renderf", "obama", "system", "scanf"]
 ID = r'[a-zA-Z]'
 operators = ["(", ")", "+", "-", "/", "*", "=", "!=", "==", ">", "<"]  #Taskall Render Edition v0.1 operators
@@ -66,6 +71,8 @@ token_operators = {
     "boolean": bool_token,
     "printf": printf,
     "scanf": scanf,
+    "do_while": do_while,
+    "do_while_not": do_while_not
 
 }
 
@@ -107,6 +114,12 @@ def tokenization():
             elif char == "=":
                 state = token_operators.get(char)()
             elif char == "*":
+                state = token_operators.get(char)()
+
+        elif char in tan_operators:
+            if char == "do_while":
+                state = token_operators.get(char)()
+            elif char == "do_while_not":
                 state = token_operators.get(char)()
 
 

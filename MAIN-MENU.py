@@ -47,6 +47,12 @@ def do_while():
 def do_while_not():
     return "WHILE_FALSE"
 
+def open_s():
+    return "OPEN"
+
+def close_s():
+    return "CLOSE"
+
 comma = ["printf", "renderf", "obama", "system", "scanf"]
 ID = r'[a-zA-Z]'
 operators = ["(", ")", "+", "-", "/", "*", "=", "!=", "==", ">", "<"]  #Taskall Render Edition v0.1 operators
@@ -72,7 +78,9 @@ token_operators = {
     "printf": printf,
     "scanf": scanf,
     "do_while": do_while,
-    "do_while_not": do_while_not
+    "do_while_not": do_while_not,
+    "(": open_s,
+    ")": close_s
 
 }
 
@@ -114,6 +122,10 @@ def tokenization():
             elif char == "=":
                 state = token_operators.get(char)()
             elif char == "*":
+                state = token_operators.get(char)()
+            elif char == "(":
+                state = token_operators.get(char)()
+            elif char == ")":
                 state = token_operators.get(char)()
 
         elif char in tan_operators:

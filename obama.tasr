@@ -1,2 +1,2 @@
-do_while ( true)
+do_while ( true )
 do_while_not ( false )

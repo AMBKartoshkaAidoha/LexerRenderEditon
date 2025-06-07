@@ -1,0 +1,6 @@
+digit n = 10
+bool = true
+boolean = false
+int = 1488
+double = 5.0
+float = 3.14

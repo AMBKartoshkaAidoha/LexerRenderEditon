@@ -36,6 +36,9 @@ def stringd():
 def bool_token():
     return "BOOL"
 
+def printf():
+    return "OUTPUT"
+
 comma = ["printf", "renderf", "obama", "system"]
 ID = r'[a-zA-Z]'
 operators = ["(", ")", "+", "-", "/", "*", "=", "!=", "==", ">", "<"]  #Taskall Render Edition v0.1 operators
@@ -57,7 +60,8 @@ token_operators = {
     "float": double,
     "string": stringd,
     "bool": bool_token,
-    "boolean": bool_token
+    "boolean": bool_token,
+    "printf": printf
 
 }
 
@@ -74,7 +78,8 @@ def tokenization():
 
     for char, state in lexer(f):
         if char in comma:
-            state = "FUNC"
+            if char == "printf":
+                state = token_operators.get(char)()
         elif char in types:
             if char == "int" or char == "digit":
                 state = token_operators.get(char)()
